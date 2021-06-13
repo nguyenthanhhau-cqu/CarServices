@@ -20,7 +20,7 @@ public class ServiceModel implements IServericeModel {
 
     private static final String URL = "jdbc:mysql://localhost:3306/serviceDB"; //NEW ADJUSTED
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "....";//YOUR PASSWORD
+    private static final String PASSWORD = "Anhdasai123";//YOUR PASSWORD
     private Connection connection = null; // manages connection
     private PreparedStatement SelectCustomerFistName = null; // select query
     private PreparedStatement SelectCustomerPhone = null; // select query
