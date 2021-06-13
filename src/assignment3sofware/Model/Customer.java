@@ -20,11 +20,12 @@ public class Customer {
         
     }
 
-    public Customer(int customerID, String lastName, String phone, String address) {
+    public Customer(int customerID, String firstName, String lastName, String phone, String address) {
         this.customerID = customerID;
         this.lastName = lastName;
         this.phone = phone;
         this.address = address;
+        this.firstName = firstName;
     }
 
     public int getCustomerID() {

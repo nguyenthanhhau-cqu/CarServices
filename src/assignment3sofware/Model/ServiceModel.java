@@ -16,34 +16,24 @@ import java.util.List;
 /**
  * @author andre
  */
-public class ServiceModel implements IServericeModel {
+public class ServiceModel implements IServiceModel {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/serviceDB"; //NEW ADJUSTED
+   private static final String URL = "jdbc:mysql://localhost:3306/carservicedb"; //NEW ADJUSTED
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "....";//YOUR PASSWORD
+    private static final String PASSWORD = "Hoanduong05";//YOUR PASSWORD
     private Connection connection = null; // manages connection
-    private PreparedStatement SelectCustomerFistName = null; // select query
-    private PreparedStatement SelectCustomerPhone = null; // select query
-
+    private PreparedStatement searchCustomerAndVehicleByName = null; // select query
+    private PreparedStatement searchCustomerAndVehicleByPhone = null; // select query
 
     // constructor
     public ServiceModel() {
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            //search customer and vehicle by name sql statement
+            searchCustomerAndVehicleByName = connection.prepareStatement("SELECT * FROM Customers As C left Join Vehicles As V on C.CustomerID=V.CustomerID where FIRSTNAME=? and LASTNAME=?");
+            //search customer and vehicle by phone sql statement
+            searchCustomerAndVehicleByPhone = connection.prepareStatement("SELECT * FROM Customers As C left Join Vehicles As V on C.CustomerID=V.CustomerID where Phone =?");
 
-            // create query that selects all entries in the AddressBook
-            //SelectCustomerFistName =
-                   // connection.prepareStatement("SELECT * FROM taxpayers");
-
-            // create query that selects entries with a specific last name
-            //SelectCustomerPhone = connection.prepareStatement(
-                    //SELECT * FROM taxpayers WHERE LastName = ?");
-
-            //Create update current entry into database
-
-
-            // create insert that adds a new entry into the database
-            
         } // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
@@ -51,10 +41,80 @@ public class ServiceModel implements IServericeModel {
         } // end catch
     } // end PersonQueries constructor
 
+   
 
+    
+    public List<Vehicle> searchCustomerAndVehicleByName(String first, String last) {
+        ResultSet resultSet = null;
+        List<Vehicle> result = new ArrayList<>();
 
+        try {
+            searchCustomerAndVehicleByName.setString(1, first);
+            searchCustomerAndVehicleByName.setString(2, last);
 
-    public void close() {
+            resultSet = searchCustomerAndVehicleByName.executeQuery();//execute query
+
+            while (resultSet.next()) {
+                 int customerID = resultSet.getInt("CUSTOMERID");//get customer id
+                String firstName = resultSet.getString("FIRSTNAME");
+                String lastName = resultSet.getString("LASTNAME");
+                String phone = resultSet.getString("PHONE");
+                String address = resultSet.getString("ADDRESS");
+
+                Customer c = new Customer(customerID, firstName, lastName, phone, address);
+
+                String vehicleNumber = resultSet.getString("VehicleNumber");
+                String vehicleModel = resultSet.getString("VehicleModel");
+                String vehicleBrand = resultSet.getString("VehicleBrand");
+                int vehicleYear = resultSet.getInt("VehicleYear");
+                int vehicleKm = resultSet.getInt("VehicleKilometers");
+
+                Vehicle v = new Vehicle(vehicleNumber, vehicleModel, vehicleBrand, vehicleYear, vehicleKm, c);
+                result.add(v);
+            } // end while
+
+        } catch (SQLException e) {//handle error
+            e.printStackTrace();
+        } // end catch
+        return result;
+    }
+
+    public List<Vehicle> searchCustomerAndVehicleByPhone(String p) {
+        ResultSet resultSet = null;
+        List<Vehicle> result = new ArrayList<>();
+
+        try {
+            searchCustomerAndVehicleByPhone.setString(1, p);
+            resultSet = searchCustomerAndVehicleByPhone.executeQuery();//execute query
+
+            while (resultSet.next()) {
+                int customerID = resultSet.getInt("CUSTOMERID");//get customer id
+                String firstName = resultSet.getString("FIRSTNAME");
+                String lastName = resultSet.getString("LASTNAME");
+                String phone = resultSet.getString("PHONE");
+                String address = resultSet.getString("ADDRESS");
+
+                Customer c = new Customer(customerID, firstName, lastName, phone, address);
+
+                String vehicleNumber = resultSet.getString("VehicleNumber");
+                String vehicleModel = resultSet.getString("VehicleModel");
+                String vehicleBrand = resultSet.getString("VehicleBrand");
+                int vehicleYear = resultSet.getInt("VehicleYear");
+                int vehicleKm = resultSet.getInt("VehicleKilometers");
+
+                Vehicle v = new Vehicle(vehicleNumber, vehicleModel, vehicleBrand, vehicleYear, vehicleKm, c);
+                result.add(v);
+
+            } // end while
+
+        } catch (SQLException e) {//handle error
+            e.printStackTrace();
+        } // end catch
+
+        return result;
+    }
+
+ public void close() {
         try {
             connection.close();
         } // end try
@@ -62,5 +122,7 @@ public class ServiceModel implements IServericeModel {
             sqlException.printStackTrace();
         } // end catch
     } // end method close
+
+    
     
 } // end class PersonQueries

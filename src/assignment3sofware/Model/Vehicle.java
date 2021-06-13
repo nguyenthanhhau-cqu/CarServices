@@ -15,19 +15,26 @@ public class Vehicle {
    private String model;
    private int year;
    private int kilometers;
-   private Customer customer;
+   private Customer c;
+
+    public Customer getC() {
+        return c;
+    }
+
+    public void setC(Customer c) {
+        this.c = c;
+    }
    
    public Vehicle() {
        
    }
 
-    public Vehicle(String registerNumber, String brand, String model, int year, int kilometers, Customer customer) {
+    public Vehicle(String registerNumber, String brand, String model, int year, int kilometers, Customer c1) {
         this.registerNumber = registerNumber;
         this.brand = brand;
         this.model = model;
         this.year = year;
         this.kilometers = kilometers;
-        this.customer = customer;
     }
 
     public String getRegisterNumber() {
