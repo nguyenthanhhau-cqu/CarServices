@@ -627,7 +627,7 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
     }
 
     @Override
-    public void displayOrderEntries(Vehicle v) {
+    public void displayVehicleEntries(Vehicle v) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

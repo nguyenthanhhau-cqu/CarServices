@@ -35,6 +35,32 @@ public class ServicePresenter {
 	    results = null;//new ArrayList<>();
 	    currentEntry = null;
 	}
+     // handles call when previousButton is clicked
+    public void showPrevious() {
+        currentEntryIndex--;
+
+        if (currentEntryIndex < 0) {
+            currentEntryIndex = numberOfEntries - 1;
+        }
+
+        currentEntry = results.get(currentEntryIndex);
+        view.displayVehicleEntries(currentEntry);
+        view.displayMaxAndCurrentIndex(numberOfEntries, currentEntryIndex);
+    }
+
+    // handles call when nextButton is clicked
+    public void showNext() {
+        currentEntryIndex++;
+
+        if (currentEntryIndex >= numberOfEntries) {
+            currentEntryIndex = 0;
+        }
+
+        currentEntry = results.get(currentEntryIndex);
+        view.displayVehicleEntries(currentEntry);
+        view.displayMaxAndCurrentIndex(numberOfEntries, currentEntryIndex);
+    }
+
     // handles call search by phone
 	   public void performQueryByPhone(String phone) {
 
@@ -54,7 +80,7 @@ public class ServicePresenter {
                  view.setCustomerPhone(c.getPhone());
                  return;
              }
-	         view.displayOrderEntries(currentEntry);
+	         view.displayVehicleEntries(currentEntry);
              view.displayCustomerEntry(c);
              view.displayMaxAndCurrentIndex(numberOfEntries, currentEntryIndex);
 	         view.setBrowsing(true);

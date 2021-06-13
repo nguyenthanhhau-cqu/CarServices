@@ -17,7 +17,7 @@ public interface IServicesView {
     public void bind(ServicePresenter p);
 
     public void displayCustomerEntry(Customer c);
-    public void displayOrderEntries(Vehicle v);
+    public void displayVehicleEntries(Vehicle v);
     public void displayDataTextArea(String s);
 
     public void setLatestCustomerID(int id);
@@ -27,5 +27,6 @@ public interface IServicesView {
     public void displayMaxAndCurrentIndex(int m, int c);
     
     public void setLatestVehicleID(String id);
+    
 
 }
