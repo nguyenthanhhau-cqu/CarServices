@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package assignment3sofware;
+package assignment3sofware.Presenter;
 
 import assignment3sofware.View.vsmsView;
 

@@ -84,7 +84,7 @@ public class vsmsView extends javax.swing.JFrame {
         serviceDateTextField = new javax.swing.JTextField();
         servicePriceTextField = new javax.swing.JTextField();
         serviceVehicleNumTextField = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        addServiceBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -364,7 +364,7 @@ public class vsmsView extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Add Service ");
+        addServiceBtn.setText("Add Service ");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -403,7 +403,7 @@ public class vsmsView extends javax.swing.JFrame {
             .addComponent(jSeparator2)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addServiceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(332, 332, 332))
         );
         jPanel4Layout.setVerticalGroup(
@@ -428,7 +428,7 @@ public class vsmsView extends javax.swing.JFrame {
                     .addComponent(servicePriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(serviceVehicleNumTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(addServiceBtn)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -528,6 +528,7 @@ public class vsmsView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
+    private javax.swing.JButton addServiceBtn;
     private javax.swing.JTextField addressTextField;
     private javax.swing.JTextField brandTextField;
     private javax.swing.JButton cancelBtn;
@@ -535,7 +536,6 @@ public class vsmsView extends javax.swing.JFrame {
     private javax.swing.JTextField customerIDTextField;
     private javax.swing.JButton displayBtn;
     private javax.swing.JTextField fNameTextField;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
