@@ -15,17 +15,19 @@ public class Vehicle {
    private String model;
    private int year;
    private int kilometers;
+   private Customer customer;
    
    public Vehicle() {
        
    }
 
-    public Vehicle(String registerNumber, String brand, String model, int year, int kilometers) {
+    public Vehicle(String registerNumber, String brand, String model, int year, int kilometers, Customer customer) {
         this.registerNumber = registerNumber;
         this.brand = brand;
         this.model = model;
         this.year = year;
         this.kilometers = kilometers;
+        this.customer = customer;
     }
 
     public String getRegisterNumber() {
