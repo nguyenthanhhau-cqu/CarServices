@@ -5,18 +5,27 @@
  */
 package assignment3sofware.View;
 
+import assignment3sofware.Model.Customer;
+import assignment3sofware.Model.Vehicle;
+import assignment3sofware.Presenter.ServicePresenter;
+
 /**
  *
  * @author ilove
  */
-public class vsmsView extends javax.swing.JFrame {
-
+public class vsmsView extends javax.swing.JFrame implements IServicesView {
+ private ServicePresenter Presenter; 
     /**
      * Creates new form vsmsView
      */
     public vsmsView() {
         initComponents();
     }
+ @Override
+         public void bind(ServicePresenter p)
+        {
+		Presenter=p;
+	 }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -365,6 +374,11 @@ public class vsmsView extends javax.swing.JFrame {
         });
 
         addServiceBtn.setText("Add Service ");
+        addServiceBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addServiceBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -491,6 +505,21 @@ public class vsmsView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_serviceVehicleNumTextFieldActionPerformed
 
+    private void addServiceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addServiceBtnActionPerformed
+        // TODO add your handling code here:
+        
+        String Description=serviceDesTexField.getText();
+        String date=serviceDateTextField.getText();
+        Double price=Double.parseDouble(servicePriceTextField.getText());
+        String VehicleNumber=serviceVehicleNumTextField.getText();
+
+        Description=Description.trim();// REMOVE empty characters
+        date=date.trim();
+        
+        Presenter.insertService(Description,date,price,VehicleNumber);
+        
+    }//GEN-LAST:event_addServiceBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -525,6 +554,11 @@ public class vsmsView extends javax.swing.JFrame {
             }
         });
     }
+ @Override
+         public void setLatestVehicleID(String id)
+         {
+		 serviceVehicleNumTextField.setText(""+id);
+	 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
@@ -586,4 +620,39 @@ public class vsmsView extends javax.swing.JFrame {
     private javax.swing.JTextArea textArea;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void displayCustomerEntry(Customer c) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void displayOrderEntries(Vehicle v) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void displayDataTextArea(String s) {
+         textArea.setText(s);
+    }
+
+    @Override
+    public void setLatestCustomerID(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setCustomerPhone(String p) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setBrowsing(boolean flag) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void displayMaxAndCurrentIndex(int m, int c) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

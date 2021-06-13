@@ -20,20 +20,25 @@ public class ServiceModel implements IServiceModel {
 
    private static final String URL = "jdbc:mysql://localhost:3306/carservicedb"; //NEW ADJUSTED
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "Hoanduong05";//YOUR PASSWORD
+    private static final String PASSWORD = "Anhdasai123";//YOUR PASSWORD
     private Connection connection = null; // manages connection
     private PreparedStatement searchCustomerAndVehicleByName = null; // select query
     private PreparedStatement searchCustomerAndVehicleByPhone = null; // select query
+    private PreparedStatement insertService = null; // Insert a new service
+    private PreparedStatement getAllVehicle = null;
+    private String lastInsertedVehicleID = "";
 
     // constructor
     public ServiceModel() {
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+             getAllVehicle = connection.prepareStatement("SELECT * FROM Vehicles");
             //search customer and vehicle by name sql statement
             searchCustomerAndVehicleByName = connection.prepareStatement("SELECT * FROM Customers As C left Join Vehicles As V on C.CustomerID=V.CustomerID where FIRSTNAME=? and LASTNAME=?");
             //search customer and vehicle by phone sql statement
             searchCustomerAndVehicleByPhone = connection.prepareStatement("SELECT * FROM Customers As C left Join Vehicles As V on C.CustomerID=V.CustomerID where Phone =?");
-
+            insertService=connection.prepareStatement("INSERT INTO services "
+                    + "(serviceDescription,servicedate,price,vehicleNumber)" + "VALUES (?,?,?,?)");
         } // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
@@ -122,6 +127,24 @@ public class ServiceModel implements IServiceModel {
             sqlException.printStackTrace();
         } // end catch
     } // end method close
+
+    @Override
+    public int insertService(String serviceDescription, String serviceDate, double price, String VehicleNumber) {
+        	int result=-1;
+		try{
+		    insertService.setString(1, serviceDescription);
+		    insertService.setString(2,serviceDate);
+		    insertService.setDouble(3, price);
+                    insertService.setString(4,VehicleNumber);
+                    
+
+            result = insertService.executeUpdate();
+        } catch (SQLException e) {//handle error
+            e.printStackTrace();
+        } // end catch
+
+		return result;
+    };
 
     
     

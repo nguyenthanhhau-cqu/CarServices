@@ -14,4 +14,6 @@ import java.util.List;
 public interface IServiceModel {
     List <Vehicle> searchCustomerAndVehicleByName (String first, String last); 
     List <Vehicle> searchCustomerAndVehicleByPhone (String p);
+    public int insertService(String serviceDescription,String serviceDate,double price,String VehicleNumber);
+
 }

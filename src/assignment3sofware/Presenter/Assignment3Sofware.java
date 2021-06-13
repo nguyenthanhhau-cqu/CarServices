@@ -5,6 +5,7 @@
  */
 package assignment3sofware.Presenter;
 
+import assignment3sofware.Model.ServiceModel;
 import assignment3sofware.View.vsmsView;
 
 /**
@@ -19,8 +20,12 @@ public class Assignment3Sofware {
     public static void main(String[] args) {
         
         // TODO code application logic here
-        vsmsView m = new vsmsView();
-        m.setVisible(true);
+        ServiceModel T = new ServiceModel();
+        vsmsView pv = new vsmsView();
+        ServicePresenter pp = new ServicePresenter(pv, T);
+        pv.bind(pp);
+        pv.setVisible(true);
+        pv.setResizable(false);
         
     }
     

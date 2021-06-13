@@ -62,4 +62,18 @@ public class ServicePresenter {
 	      else
 	        view.displayDataTextArea("customer Not found");
 	   }
+           public void insertService (String serviceDescription,String serviceDate,double price,String VehicleNumber) {
+
+	      int result = model.insertService(serviceDescription,serviceDate,price,VehicleNumber);
+
+	      if ( result == 1 )
+          {
+	          view.displayDataTextArea("Service added");
+          }
+	      else
+	          view.displayDataTextArea("Service not added");
+	   }//end
+
+	   //add order to a customer
+
 }

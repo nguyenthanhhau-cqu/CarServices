@@ -25,4 +25,7 @@ public interface IServicesView {
 
     public void setBrowsing(boolean flag);
     public void displayMaxAndCurrentIndex(int m, int c);
+    
+    public void setLatestVehicleID(String id);
+
 }
