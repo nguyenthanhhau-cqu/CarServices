@@ -5,7 +5,7 @@
  */
 package assignment3sofware.View;
 
-import ServicePresenter.ServicePresenter;
+import assignment3sofware.Presenter.ServicePresenter;
 import assignment3sofware.Model.Customer;
 import assignment3sofware.Model.Vehicle;
 
