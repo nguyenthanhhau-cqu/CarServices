@@ -150,12 +150,12 @@ public class ServiceModel implements IServiceModel {
 		return result;
     };
 
-    public int cancelABooking(String serviceID) {
+     public int cancelABooking(String serviceID) {
         ResultSet resultSet = null;
         int result = 0;
         try {
             cancelABooking.setString(1, serviceID);
-            cancelABooking.executeQuery();
+            cancelABooking.executeUpdate();
         } // end while
         catch (SQLException e) {//handle error
             e.printStackTrace();

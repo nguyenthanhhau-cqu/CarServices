@@ -7,6 +7,7 @@ package assignment3sofware.View;
 
 import assignment3sofware.Presenter.ServicePresenter;
 import assignment3sofware.Model.Customer;
+import assignment3sofware.Model.Services;
 import assignment3sofware.Model.Vehicle;
 
 /**
@@ -18,6 +19,7 @@ public interface IServicesView {
 
     public void displayCustomerEntry(Customer c);
     public void displayVehicleEntries(Vehicle v);
+    public void displayServiceEntries (Services s);
     public void displayDataTextArea(String s);
 
     public void setLatestCustomerID(int id);

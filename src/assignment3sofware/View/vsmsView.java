@@ -6,6 +6,7 @@
 package assignment3sofware.View;
 
 import assignment3sofware.Model.Customer;
+import assignment3sofware.Model.Services;
 import assignment3sofware.Model.Vehicle;
 import assignment3sofware.Presenter.ServicePresenter;
 
@@ -75,7 +76,7 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
         srchByPhoneBtn = new javax.swing.JButton();
         updateBtn = new javax.swing.JButton();
         displayBtn = new javax.swing.JButton();
-        srchBookingBtn = new javax.swing.JButton();
+        clearAllBtn = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JSeparator();
         statisticBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -95,6 +96,12 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
         serviceVehicleNumTextField = new javax.swing.JTextField();
         addServiceBtn = new javax.swing.JButton();
         cancelBtn = new javax.swing.JButton();
+        srchBookingBtn = new javax.swing.JButton();
+        currentServicePageNum = new javax.swing.JTextField();
+        sumServicePageNum1 = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        preServiceBtn = new javax.swing.JButton();
+        nextServiceBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,10 +127,26 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
         jLabel7.setText("Registration number");
 
         preBtn.setText("Previous");
+        preBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                preBtnActionPerformed(evt);
+            }
+        });
 
         nextBtn.setText("Next");
+        nextBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextBtnActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("of");
+
+        currentPageNum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                currentPageNumActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -139,8 +162,8 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(preBtn)
                                 .addGap(20, 20, 20)
-                                .addComponent(currentPageNum, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addComponent(currentPageNum, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel8)
                                 .addGap(10, 10, 10))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -170,7 +193,7 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(brandTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(sumPageNum, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(sumPageNum, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(3, 3, 3)))))
@@ -320,7 +343,12 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
 
         displayBtn.setText("Display all services");
 
-        srchBookingBtn.setText("Search a booking");
+        clearAllBtn.setText("Clear All");
+        clearAllBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearAllBtnActionPerformed(evt);
+            }
+        });
 
         statisticBtn.setText("Statistic");
 
@@ -337,10 +365,10 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(displayBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(srchBookingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(statisticBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(statisticBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                    .addComponent(clearAllBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(57, 57, 57))
             .addComponent(jSeparator4)
         );
@@ -353,7 +381,7 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(srchByNameBtn)
                     .addComponent(updateBtn)
-                    .addComponent(srchBookingBtn))
+                    .addComponent(clearAllBtn))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(srchByPhoneBtn)
@@ -392,6 +420,40 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
         });
 
         cancelBtn.setText("Cancel a booking");
+        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBtnActionPerformed(evt);
+            }
+        });
+
+        srchBookingBtn.setText("Search a booking");
+        srchBookingBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                srchBookingBtnActionPerformed(evt);
+            }
+        });
+
+        currentServicePageNum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                currentServicePageNumActionPerformed(evt);
+            }
+        });
+
+        jLabel21.setText("of");
+
+        preServiceBtn.setText("Previous");
+        preServiceBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                preServiceBtnActionPerformed(evt);
+            }
+        });
+
+        nextServiceBtn.setText("Next");
+        nextServiceBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextServiceBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -399,27 +461,27 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator2)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel16)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(serviceIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel17)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                                .addComponent(serviceDesTexField, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(addServiceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69)))
+                .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(serviceIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(serviceDesTexField, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(addServiceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(57, 57, 57)
+                                .addComponent(srchBookingBtn)))))
+                .addGap(7, 7, 7)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel18)
@@ -437,8 +499,21 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
                                 .addComponent(serviceVehicleNumTextField)
                                 .addGap(52, 52, 52))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(221, 221, 221))))
+                        .addGap(102, 102, 102)
+                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(246, 246, 246)
+                .addComponent(preServiceBtn)
+                .addGap(34, 34, 34)
+                .addComponent(currentServicePageNum, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel21)
+                .addGap(28, 28, 28)
+                .addComponent(sumServicePageNum1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(nextServiceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -464,7 +539,15 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addServiceBtn)
-                    .addComponent(cancelBtn))
+                    .addComponent(cancelBtn)
+                    .addComponent(srchBookingBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(currentServicePageNum, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sumServicePageNum1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21)
+                    .addComponent(preServiceBtn)
+                    .addComponent(nextServiceBtn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -504,8 +587,8 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -552,6 +635,60 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
          presenter.performQueryByName(fNameTextField.getText().trim(), lNameTextField.getText().trim());
     }//GEN-LAST:event_srchByNameBtnActionPerformed
 
+    private void clearAllBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearAllBtnActionPerformed
+        // TODO add your handling code here:
+        customerIDTextField.setText("");
+        fNameTextField.setText("");
+        lNameTextField.setText("");
+        phoneTextField.setText("");
+        addressTextField.setText("");
+        regisNumTextField.setText("");
+        brandTextField.setText("");
+        modelTextField.setText("");
+        manYearTextField.setText("");
+        kmTextField.setText("");
+        serviceIDTextField.setText("");
+        serviceDesTexField.setText("");
+        serviceDateTextField.setText("");
+        servicePriceTextField.setText("");
+        serviceVehicleNumTextField.setText("");
+    }//GEN-LAST:event_clearAllBtnActionPerformed
+
+    private void srchBookingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_srchBookingBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_srchBookingBtnActionPerformed
+
+    private void preBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preBtnActionPerformed
+        // TODO add your handling code here:
+        presenter.showPrevious();
+    }//GEN-LAST:event_preBtnActionPerformed
+
+    private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
+        // TODO add your handling code here:
+        presenter.showNext();
+    }//GEN-LAST:event_nextBtnActionPerformed
+
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        // TODO add your handling code here:
+        presenter.cancelBooking(serviceIDTextField.getText().trim());
+    }//GEN-LAST:event_cancelBtnActionPerformed
+
+    private void preServiceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preServiceBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_preServiceBtnActionPerformed
+
+    private void nextServiceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextServiceBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nextServiceBtnActionPerformed
+
+    private void currentServicePageNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentServicePageNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_currentServicePageNumActionPerformed
+
+    private void currentPageNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentPageNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_currentPageNumActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -568,7 +705,9 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
     private javax.swing.JTextField addressTextField;
     private javax.swing.JTextField brandTextField;
     private javax.swing.JButton cancelBtn;
+    private javax.swing.JButton clearAllBtn;
     private javax.swing.JTextField currentPageNum;
+    private javax.swing.JTextField currentServicePageNum;
     private javax.swing.JTextField customerIDTextField;
     private javax.swing.JButton displayBtn;
     private javax.swing.JTextField fNameTextField;
@@ -585,6 +724,7 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -606,8 +746,10 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
     private javax.swing.JTextField manYearTextField;
     private javax.swing.JTextField modelTextField;
     private javax.swing.JButton nextBtn;
+    private javax.swing.JButton nextServiceBtn;
     private javax.swing.JTextField phoneTextField;
     private javax.swing.JButton preBtn;
+    private javax.swing.JButton preServiceBtn;
     private javax.swing.JTextField regisNumTextField;
     private javax.swing.JButton saveBtn;
     private javax.swing.JTextField serviceDateTextField;
@@ -620,6 +762,7 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
     private javax.swing.JButton srchByPhoneBtn;
     private javax.swing.JButton statisticBtn;
     private javax.swing.JTextField sumPageNum;
+    private javax.swing.JTextField sumServicePageNum1;
     private javax.swing.JTextArea textArea;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
@@ -670,5 +813,11 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
     public void displayMaxAndCurrentIndex(int m, int c) {
         currentPageNum.setText(""+(c+1));
         sumPageNum.setText(""+m);
+    }
+
+    @Override
+    public void displayServiceEntries(Services s) {
+        serviceIDTextField.setText(""+s.getServiceNumber());
+        
     }
 }

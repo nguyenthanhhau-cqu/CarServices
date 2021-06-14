@@ -115,8 +115,15 @@ public class ServicePresenter {
         }
     }
 
-    public void cancelBooking(String serviceID) {
-
+   public void cancelBooking(String serviceID) {
+        int result = model.cancelABooking(serviceID);
+        
+        if (result ==1) {
+            view.displayDataTextArea("Booking canceled");
+        }
+        else {
+            view.displayDataTextArea("Cancel booking failed!");
+        }
     }
 
     public void insertService(String serviceDescription, String serviceDate, double price, String VehicleNumber) {
