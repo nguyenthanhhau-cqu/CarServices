@@ -18,4 +18,9 @@ public interface IServiceModel {
     public int insertService(String serviceDescription,String serviceDate,double price,String VehicleNumber);
     int cancelABooking(String serviceID);
     public int updateCustomerDetail(String first, String last, String phone, String address, int customerID);
+    public int addCustomer( String firstNameTextField, String lastNameTextField, String phoneTextField, String addressTextField);
+   
+    public int addVehicleToCustomer(String VehicleNumber,String VehicleBrand,String VehicleModel, int VehicleYear, int VehicleKilometers, int CustomerID);
+    public int getLastInsertedCustomerID();
+    public void close();
 }

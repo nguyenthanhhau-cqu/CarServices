@@ -31,4 +31,24 @@ public interface IServicesView {
     public void setLatestVehicleID(String id);
     
     public void displayMaxAndCurrentServiceIndex(int sm, int sc);
+    void setCustomerIDTextField(int a);
+    int getCustomerIDTextField();
+    void setFirstNameTextField(String s);
+    String getFirstNameTextField();
+    void setLastNameTextField(String s);
+    String getLastNameTextField(); 
+    void setPhoneTextField(String s);
+    String getPhoneTextField();
+    void setAddressTextField(String s);
+    String getAddressTextField();
+    void setVehicleNumTextField(String a);
+    String getVehicleNumTextField();
+     void setVehicleBrandTextField(String a);
+    String getVehicleBrandTextField();
+     void setVehicleModelTextField(String a);
+    String getVehicleModelTextField();
+     void setVehicleYearTextField(int a);
+    int getVehicleYearTextField();
+      void setKilometersTextField(int a);
+    int getKilometersTextField();
 }

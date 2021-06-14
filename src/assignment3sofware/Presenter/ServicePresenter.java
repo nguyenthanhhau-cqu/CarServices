@@ -192,4 +192,38 @@ public class ServicePresenter {
             view.displayDataTextArea("Customer's detail not updated");
         }
     }
+   
+    public void insertNewEntry() {
+            int latestCustomerID=model.getLastInsertedCustomerID();
+
+        int result = model.addCustomer(   
+             
+                view.getFirstNameTextField(),
+                view.getLastNameTextField(),
+                view.getPhoneTextField(),
+                view.getAddressTextField()           
+                
+        );
+        if ( result == 1 ) {
+              view.displayDataTextArea("Customer added");
+              view.setLatestCustomerID(latestCustomerID);
+
+        }        
+        else{
+               view.displayDataTextArea("Customer not added");
+
+        }
+
+    }
+    public void addVehicleToCustomer(String VehicleNum,String VehicleBrand,String VehicleMode, int VehicleYear, int VehicleKilometer, int CustomerID) {        
+
+	      int result = model.addVehicleToCustomer(VehicleNum,VehicleBrand, VehicleMode,VehicleYear,VehicleKilometer, CustomerID);
+	      if ( result == 1 )
+	          view.displayDataTextArea("Vehicle added");
+	      else
+	          view.displayDataTextArea("Vehicle not added");
+	   }//END
+    
+           
+
     }

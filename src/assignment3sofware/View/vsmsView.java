@@ -124,6 +124,11 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
         });
 
         addBtn.setText("Add vehicle to customer");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Registration number");
 
@@ -366,11 +371,11 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
                 .addGap(45, 45, 45)
                 .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(srchByNameBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(srchByPhoneBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
+                    .addComponent(srchByPhoneBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                 .addGap(108, 108, 108)
                 .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(displayBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
+                    .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 160, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(statisticBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
@@ -607,7 +612,19 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
     }//GEN-LAST:event_kmTextFieldActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
-        // TODO add your handling code here:
+    
+    if (customerIDTextField.getText().compareTo("") == 0 &&
+                    fNameTextField.getText().compareTo("") == 0 &&
+                    lNameTextField.getText().compareTo("") == 0 &&
+                    phoneTextField.getText().compareTo("") == 0 &&
+                    addressTextField.getText().compareTo("") == 0)
+            {
+                JOptionPane.showMessageDialog(this,"Please Enter Details");
+               
+            }
+    else{
+        presenter.insertNewEntry();
+    }
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void serviceVehicleNumTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serviceVehicleNumTextFieldActionPerformed
@@ -616,6 +633,15 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
 
     private void addServiceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addServiceBtnActionPerformed
         // TODO add your handling code here:
+        if (regisNumTextField.getText().compareTo("") == 0 &&
+                    brandTextField.getText().compareTo("") == 0 &&
+                    modelTextField.getText().compareTo("") == 0 &&
+                    manYearTextField.getText().compareTo("") == 0 &&
+                    kmTextField.getText().compareTo("") == 0)
+            {
+                JOptionPane.showMessageDialog(this,"Please Enter Details");
+               
+            }
         textArea.setText("");
         String Description=serviceDesTexField.getText();
         String date=serviceDateTextField.getText();
@@ -624,6 +650,7 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
 
         Description=Description.trim();// REMOVE empty characters
         date=date.trim();
+        
         
         presenter.insertService(Description,date,price,VehicleNumber);
         
@@ -757,6 +784,18 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
         textArea.setText("");
         presenter.updateCustomerDetail(fNameTextField.getText().trim(), lNameTextField.getText().trim(), phoneTextField.getText().trim(), addressTextField.getText().trim(), Integer.parseInt(customerIDTextField.getText()));
     }//GEN-LAST:event_updateBtnActionPerformed
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+       presenter.showNext();
+       textArea.setText("----------------------------"
+       +"Founded Customer Information -----------------------"
+       +"\n" + "          CustomerID: " + getCustomerIDTextField()
+       +"\n" + "          FirstName: " + getFirstNameTextField()
+       +"\n" + "          LastName: " + getLastNameTextField()
+       +"\n" + "          Phone: " + getPhoneTextField()
+       +"\n" + "          Address: " + getAddressTextField()
+               
+       );    }//GEN-LAST:event_addBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -900,4 +939,129 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
         currentServicePageNum.setText(""+(sc+1));
         sumServicePageNum.setText(""+sm);
     }
+    
+ @Override
+    public void setCustomerIDTextField(int a) {
+        customerIDTextField.setText(Integer.toString(a)); //To change body of generated methods, choose Tools | Templates.
+    }    
+ @Override
+    public int getCustomerIDTextField() {
+        return Integer.parseInt(customerIDTextField.getText());
+    }
+    
+ @Override
+    public void setFirstNameTextField(String a) {
+        fNameTextField.setText(a);   
+    }
+    
+ @Override
+    public String getFirstNameTextField() {
+        return fNameTextField.getText();
+    }
+
+    
+ @Override
+    public void setLastNameTextField(String a) {
+         lNameTextField.setText(a); 
+    }
+
+    
+ @Override
+    public String getLastNameTextField() {
+        return lNameTextField.getText();    
+    }
+
+    
+ @Override
+    public void setAddressTextField(String a) {
+        addressTextField.setText(a); 
+    }
+
+    
+ @Override
+    public String getAddressTextField() {
+        return addressTextField.getText(); 
+    }
+
+    
+ @Override
+    public void setPhoneTextField(String a) {
+         phoneTextField.setText(a); 
+    }
+
+    
+ @Override
+    public String getPhoneTextField() {
+        return phoneTextField.getText(); 
+    }
+    
+    public void setMaxTextField(String a) {
+         sumPageNum.setText(a);   
+    }
+
+    public String getMaxTextField() {
+        return sumPageNum.getText();
+    }
+
+    public void setIndexTextField(String a) {
+         currentPageNum.setText(a);   
+    }
+
+    public String getIndexTextField() {
+        return currentPageNum.getText();
+    }
+ @Override
+    public void setVehicleNumTextField(String a) {
+         regisNumTextField.setText(a); 
+    }
+
+ @Override
+     public String getVehicleNumTextField() {
+        return regisNumTextField.getText();    
+    }
+ @Override
+    public String getVehicleBrandTextField() {
+        return brandTextField.getText();    
+    }
+ @Override
+      public void setVehicleBrandTextField(String a) {
+         brandTextField.setText(a); 
+    }    
+ @Override
+    public String getVehicleModelTextField() {
+        return modelTextField.getText();    
+    }
+ @Override
+     public void setVehicleModelTextField(String a) {
+         modelTextField.setText(a); 
+    } 
+
+    public void getVehicleYearTextField(int a) {
+         Integer.parseInt(manYearTextField.getText()); 
+    }
+    
+    public int setVehicleYearTextField() {
+          
+        return Integer.parseInt(manYearTextField.getText());
+    }
+      public void setKilometersTextField(int a) {
+         Integer.parseInt(kmTextField.getText());
+    }   
+ @Override
+    public int getKilometersTextField() {
+        
+        return Integer.parseInt(kmTextField.getText());
+    }
+
+    @Override
+    public void setVehicleYearTextField(int a) {
+    Integer.parseInt(manYearTextField.getText()); 
+    }
+
+    @Override
+    public int getVehicleYearTextField() {
+     return   Integer.parseInt(manYearTextField.getText()); 
+     
+    }
+   
 }

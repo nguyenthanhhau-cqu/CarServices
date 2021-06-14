@@ -20,7 +20,7 @@ public class ServiceModel implements IServiceModel {
 
     private static final String URL = "jdbc:mysql://localhost:3306/carservicedb"; //NEW ADJUSTED
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "Hoanduong05";//YOUR PASSWORD
+    private static final String PASSWORD = "Dang123";//YOUR PASSWORD
     private Connection connection = null; // manages connection
     private PreparedStatement searchCustomerAndVehicleByName = null; // select query
     private PreparedStatement searchCustomerAndVehicleByPhone = null; // select query
@@ -30,6 +30,12 @@ public class ServiceModel implements IServiceModel {
     private PreparedStatement cancelABooking = null;
     private PreparedStatement searchBookingByVehicleNumber = null;
     private PreparedStatement updateCustomerDetail = null;
+    private PreparedStatement addVehicletoCustomer = null; // 
+    private PreparedStatement getAllCustomer =null;
+    private int lastInsertedCustomerID=0; //latest customer ID after inserted a new cusoter
+    private PreparedStatement selectAllCustomers = null;
+    private PreparedStatement insertNewCustomer = null;// create a new customer 
+
 
     // constructor
     public ServiceModel() {
@@ -49,6 +55,15 @@ public class ServiceModel implements IServiceModel {
             searchBookingByVehicleNumber = connection.prepareStatement("SELECT * FROM Services As S left join Vehicles As V on S.VehicleNumber = V.VehicleNumber left join Customers as C on V.CustomerID = C.CustomerID Where S.VehicleNumber = ?");
             //Update customer detail
             updateCustomerDetail = connection.prepareStatement("UPDATE Customers SET FIRSTNAME =?, LASTNAME =?, PHONE = ?, ADDRESS = ? WHERE CUSTOMERID = ?");
+            insertNewCustomer = connection.prepareStatement(
+                    "INSERT INTO Customers " +
+                            "(FIRSTNAME, LASTNAME, PHONE, ADDRESS) " +
+                            "VALUES ( ?, ?, ?, ? )" );
+            getAllCustomer = connection.prepareStatement("SELECT * FROM Customers");
+         
+            addVehicletoCustomer = connection.prepareStatement(
+                            "INSERT INTO Vehicles "
+                    + "(VehicleNumber,VehicleBrand,VehicleModel,VehicleYear,VehicleKilometers, CustomerID)" + "VALUES (?,?, ?, ?, ?,?)");   
         } // end try  
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
@@ -227,5 +242,86 @@ public class ServiceModel implements IServiceModel {
         } // end catch
         return result;
     }
+     public int getLastInsertedCustomerID()
+    {
+		getAllCustomer();
+		return lastInsertedCustomerID;
+	}
 
+    //select all of the customes in the database-
+    public void getAllCustomer()
+    {
+        ResultSet resultSet = null;
+
+        try {
+            resultSet = getAllCustomer.executeQuery();//execute query
+
+            int customerID=0;
+
+            while (resultSet.next()) {
+              customerID=resultSet.getInt(1);
+            }
+
+            lastInsertedCustomerID=customerID;// latest customerID
+
+            resultSet.close();
+        } // end try
+        catch (SQLException e)
+        {
+           e.printStackTrace();
+        }
+
+    } // end method
+    @Override
+    public int addCustomer(  String firstName, String lastName, String phone, String address)
+    {
+      int result=-1;
+
+        // set parameters, then execute insertNewTaxpayer
+        try
+        {
+            
+            insertNewCustomer.setString( 1, firstName );
+            insertNewCustomer.setString( 2, lastName );
+            insertNewCustomer.setString( 3, phone );
+            insertNewCustomer.setString( 4, address );  
+
+            // insert the new entry; returns # of rows updated
+            result = insertNewCustomer.executeUpdate();
+        } // end try
+        catch ( SQLException sqlException )
+        {
+            sqlException.printStackTrace();
+            close();
+        } // end catch
+
+        return result;
+    } // end method addCustomer
+
+
+    
+   
+
+    @Override
+    public int addVehicleToCustomer(String VehicleNumber, String VehicleBrand, String VehicleModel, int VehicleYear, int VehicleKilometers, int CustomerID) {
+        	 {
+			int result=-1;
+			try{
+			    addVehicletoCustomer.setString(1, VehicleNumber);
+			    addVehicletoCustomer.setString(2,VehicleBrand);
+			    addVehicletoCustomer.setString(3,VehicleModel);
+                            addVehicletoCustomer.setInt(4, VehicleYear);//fk
+                            addVehicletoCustomer.setInt(5,VehicleKilometers);
+                            addVehicletoCustomer.setInt(6,CustomerID);
+
+                            result = addVehicletoCustomer.executeUpdate();
+	        } catch (SQLException e) {//handle error
+	            e.printStackTrace();
+	        } // end catch
+
+			return result;
+	 }// end of the method
+    }
+
+    
 } // end class PersonQueries
