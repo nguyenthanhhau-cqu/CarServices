@@ -682,6 +682,11 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
 
     private void srchBookingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_srchBookingBtnActionPerformed
         // TODO add your handling code here:
+         if (serviceVehicleNumTextField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Vehicle number must be entered", "Error", JOptionPane.ERROR_MESSAGE);
+            serviceVehicleNumTextField.requestFocus(); //return to nameField back
+            return;
+        }
         //clean text area
         textArea.setText("");
         presenter.searchBookingByVehicleNumber(serviceVehicleNumTextField.getText().trim());
