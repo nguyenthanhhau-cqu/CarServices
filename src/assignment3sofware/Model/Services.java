@@ -15,17 +15,35 @@ public class Services {
     private String serviceDate;
     private double price;
     private Vehicle vehicleNum;
+    Vehicle v;
     
     public Services() {
         
     }
 
-    public Services(int serviceNumber, String serviceDescription, String serviceDate, double price, String VehicleNum) {
+    public Services(int serviceNumber, String serviceDescription, String serviceDate, double price, String VehicleNum, Vehicle v1) {
         this.serviceID = serviceNumber;
         this.serviceDescription = serviceDescription;
         this.serviceDate = serviceDate;
         this.price = price;
         this.vehicleNum = vehicleNum;
+        v = v1;
+    }
+
+    public int getServiceID() {
+        return serviceID;
+    }
+
+    public void setServiceID(int serviceID) {
+        this.serviceID = serviceID;
+    }
+
+    public Vehicle getV() {
+        return v;
+    }
+
+    public void setV(Vehicle v1) {
+        v =v1;
     }
 
     public int getServiceNumber() {

@@ -30,5 +30,5 @@ public interface IServicesView {
     
     public void setLatestVehicleID(String id);
     
-
+    public void displayMaxAndCurrentServiceIndex(int sm, int sc);
 }

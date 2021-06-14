@@ -7,8 +7,10 @@ package assignment3sofware.Presenter;
  */
 import assignment3sofware.Model.Customer;
 import assignment3sofware.Model.IServiceModel;
+import assignment3sofware.Model.Services;
 import assignment3sofware.Model.Vehicle;
 import assignment3sofware.View.IServicesView;
+import java.security.Provider.Service;
 import java.util.List;
 
 /**
@@ -21,8 +23,12 @@ public class ServicePresenter {
     IServiceModel model;
 
     List<Vehicle> results;// list
+    List<Services> serviceResult;
     int currentEntryIndex;
     int numberOfEntries;
+    int currentServiceEntryIndex;
+    int numberOfServiceEntries;
+    Services currentServiceEntry;
     Vehicle currentEntry;
 
     //constructor
@@ -34,7 +40,7 @@ public class ServicePresenter {
         results = null;//new ArrayList<>();
         currentEntry = new Vehicle();
     }
-    // handles call when previousButton is clicked
+    // handles call when previousButton in Vehicle panel is clicked
 
     public void showPrevious() {
         currentEntryIndex--;
@@ -48,7 +54,7 @@ public class ServicePresenter {
         view.displayMaxAndCurrentIndex(numberOfEntries, currentEntryIndex);
     }
 
-    // handles call when nextButton is clicked
+    // handles call when nextButton in Vehicl panel is clicked
     public void showNext() {
         currentEntryIndex++;
 
@@ -59,6 +65,29 @@ public class ServicePresenter {
         currentEntry = results.get(currentEntryIndex);
         view.displayVehicleEntries(currentEntry);
         view.displayMaxAndCurrentIndex(numberOfEntries, currentEntryIndex);
+    }
+
+    //handles when next button in service panel is clicked
+    public void showNextService() {
+        currentServiceEntryIndex++;
+        if (currentServiceEntryIndex >= numberOfServiceEntries) {
+            currentServiceEntryIndex = 0;
+        }
+
+        currentServiceEntry = serviceResult.get(currentServiceEntryIndex);
+        view.displayServiceEntries(currentServiceEntry);
+        view.displayMaxAndCurrentServiceIndex(numberOfServiceEntries, currentServiceEntryIndex);
+    }
+
+    //handles when previouse button in service panel is clicked
+    public void showPreviousService() {
+        currentServiceEntryIndex--;
+        if (currentServiceEntryIndex < 0) {
+            currentServiceEntryIndex = numberOfServiceEntries - 1;
+        }
+        currentServiceEntry = serviceResult.get(currentServiceEntryIndex);
+        view.displayServiceEntries(currentServiceEntry);
+        view.displayMaxAndCurrentServiceIndex(numberOfServiceEntries, currentServiceEntryIndex);
     }
 
     // handles call search by phone
@@ -115,17 +144,16 @@ public class ServicePresenter {
         }
     }
 
-   public void cancelBooking(String serviceID) {
+    public void cancelBooking(String serviceID) {
         int result = model.cancelABooking(serviceID);
-        
-        if (result ==1) {
+
+        if (result == 1) {
             view.displayDataTextArea("Booking canceled");
-        }
-        else {
+        } else {
             view.displayDataTextArea("Cancel booking failed!");
         }
     }
-
+    //add a new service 
     public void insertService(String serviceDescription, String serviceDate, double price, String VehicleNumber) {
 
         int result = model.insertService(serviceDescription, serviceDate, price, VehicleNumber);
@@ -136,6 +164,32 @@ public class ServicePresenter {
             view.displayDataTextArea("Service not added");
         }
     }//end
-
-    //add order to a customer
-}
+    
+    //searchBooking by Vehicle Number
+    public void searchBookingByVehicleNumber(String serviceID) {
+        serviceResult = model.searchServiclesByVehicleNum(serviceID);
+        numberOfServiceEntries = serviceResult.size();
+        if (numberOfServiceEntries == 0) {
+                view.displayDataTextArea("This vehicle has not got any booking or vehicle not found!");
+                return;
+            }
+        if(numberOfServiceEntries != 0){
+            currentServiceEntryIndex = 0;
+            currentServiceEntry = serviceResult.get(currentServiceEntryIndex);
+            view.displayServiceEntries(currentServiceEntry);
+            view.displayMaxAndCurrentServiceIndex(numberOfServiceEntries, currentServiceEntryIndex);
+            view.setBrowsing(true);          
+        }
+        }
+    
+    public void updateCustomerDetail (String first, String last, String phone, String address, int customerID){
+        int results = model.updateCustomerDetail(first, last, phone, address, customerID);
+        
+        if (results ==1){
+            view.displayDataTextArea("Customer's detail updated");
+        }
+        else{
+            view.displayDataTextArea("Customer's detail not updated");
+        }
+    }
+    }

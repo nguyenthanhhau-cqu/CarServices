@@ -9,6 +9,7 @@ import assignment3sofware.Model.Customer;
 import assignment3sofware.Model.Services;
 import assignment3sofware.Model.Vehicle;
 import assignment3sofware.Presenter.ServicePresenter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -56,7 +57,7 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
         jLabel8 = new javax.swing.JLabel();
         currentPageNum = new javax.swing.JTextField();
         sumPageNum = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
+        customerPanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
@@ -71,7 +72,7 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
         jLabel13 = new javax.swing.JLabel();
         saveBtn = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        buttonPanel = new javax.swing.JPanel();
         srchByNameBtn = new javax.swing.JButton();
         srchByPhoneBtn = new javax.swing.JButton();
         updateBtn = new javax.swing.JButton();
@@ -81,7 +82,7 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
         statisticBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         textArea = new javax.swing.JTextArea();
-        jPanel4 = new javax.swing.JPanel();
+        servicePanel = new javax.swing.JPanel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -98,7 +99,7 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
         cancelBtn = new javax.swing.JButton();
         srchBookingBtn = new javax.swing.JButton();
         currentServicePageNum = new javax.swing.JTextField();
-        sumServicePageNum1 = new javax.swing.JTextField();
+        sumServicePageNum = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         preServiceBtn = new javax.swing.JButton();
         nextServiceBtn = new javax.swing.JButton();
@@ -253,66 +254,66 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout customerPanelLayout = new javax.swing.GroupLayout(customerPanel);
+        customerPanel.setLayout(customerPanelLayout);
+        customerPanelLayout.setHorizontalGroup(
+            customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator3)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(customerPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(customerPanelLayout.createSequentialGroup()
+                        .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(customerPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(customerIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 5, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addGroup(customerPanelLayout.createSequentialGroup()
+                                .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel12)
                                         .addGap(30, 30, 30))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGroup(customerPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel10)
                                         .addGap(18, 18, 18)))
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(fNameTextField)
                                     .addComponent(addressTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
                             .addComponent(jLabel13))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lNameTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(phoneTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(customerPanelLayout.createSequentialGroup()
                 .addGap(148, 148, 148)
                 .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        customerPanelLayout.setVerticalGroup(
+            customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(customerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addGap(24, 24, 24)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(customerIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jLabel11)
                     .addComponent(fNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(phoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -340,6 +341,11 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
         });
 
         updateBtn.setText("Update customer's detail");
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
 
         displayBtn.setText("Display all services");
 
@@ -352,38 +358,38 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
 
         statisticBtn.setText("Statistic");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout buttonPanelLayout = new javax.swing.GroupLayout(buttonPanel);
+        buttonPanel.setLayout(buttonPanelLayout);
+        buttonPanelLayout.setHorizontalGroup(
+            buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buttonPanelLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(srchByNameBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(srchByPhoneBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
                 .addGap(108, 108, 108)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(displayBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(statisticBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                     .addComponent(clearAllBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(57, 57, 57))
             .addComponent(jSeparator4)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        buttonPanelLayout.setVerticalGroup(
+            buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buttonPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(srchByNameBtn)
                     .addComponent(updateBtn)
                     .addComponent(clearAllBtn))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(srchByPhoneBtn)
                     .addComponent(displayBtn)
                     .addComponent(statisticBtn)))
@@ -455,54 +461,51 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
             }
         });
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout servicePanelLayout = new javax.swing.GroupLayout(servicePanel);
+        servicePanel.setLayout(servicePanelLayout);
+        servicePanelLayout.setHorizontalGroup(
+            servicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator2)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, servicePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                .addGroup(servicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, servicePanelLayout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(serviceIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, servicePanelLayout.createSequentialGroup()
                         .addComponent(jLabel15)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGroup(servicePanelLayout.createSequentialGroup()
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(servicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(serviceDesTexField, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addGroup(servicePanelLayout.createSequentialGroup()
                                 .addComponent(addServiceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(57, 57, 57)
                                 .addComponent(srchBookingBtn)))))
                 .addGap(7, 7, 7)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(servicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(servicePanelLayout.createSequentialGroup()
+                        .addGroup(servicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel18)
                             .addComponent(jLabel19))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(serviceDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(servicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(serviceDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(servicePanelLayout.createSequentialGroup()
                                 .addComponent(servicePriceTextField)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel20)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(serviceVehicleNumTextField)
-                                .addGap(52, 52, 52))))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(serviceVehicleNumTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(servicePanelLayout.createSequentialGroup()
                         .addGap(102, 102, 102)
-                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
-            .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(servicePanelLayout.createSequentialGroup()
                 .addGap(246, 246, 246)
                 .addComponent(preServiceBtn)
                 .addGap(34, 34, 34)
@@ -510,26 +513,26 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel21)
                 .addGap(28, 28, 28)
-                .addComponent(sumServicePageNum1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sumServicePageNum, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(nextServiceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        servicePanelLayout.setVerticalGroup(
+            servicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(servicePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(servicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(jLabel18)
                     .addComponent(serviceIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(serviceDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(servicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(jLabel19)
                     .addComponent(jLabel20)
@@ -537,14 +540,15 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
                     .addComponent(servicePriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(serviceVehicleNumTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addServiceBtn)
+                .addGroup(servicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cancelBtn)
-                    .addComponent(srchBookingBtn))
+                    .addGroup(servicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(addServiceBtn)
+                        .addComponent(srchBookingBtn)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(servicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(currentServicePageNum, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sumServicePageNum1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sumServicePageNum, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21)
                     .addComponent(preServiceBtn)
                     .addComponent(nextServiceBtn))
@@ -563,18 +567,18 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(servicePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(customerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(12, 12, 12)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -585,13 +589,13 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(customerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(servicePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -612,7 +616,7 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
 
     private void addServiceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addServiceBtnActionPerformed
         // TODO add your handling code here:
-        
+        textArea.setText("");
         String Description=serviceDesTexField.getText();
         String date=serviceDateTextField.getText();
         Double price=Double.parseDouble(servicePriceTextField.getText());
@@ -627,16 +631,38 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
 
     private void srchByPhoneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_srchByPhoneBtnActionPerformed
         // TODO add your handling code here:
+        //exception
+        if (phoneTextField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Customer phone must be entered", "Error", JOptionPane.ERROR_MESSAGE);
+            phoneTextField.requestFocus(); //return to nameField back
+            return;
+        }
+        textArea.setText("");
         presenter.performQueryByPhone(phoneTextField.getText().trim());
     }//GEN-LAST:event_srchByPhoneBtnActionPerformed
 
     private void srchByNameBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_srchByNameBtnActionPerformed
         // TODO add your handling code here:
+        //eception
+        if (fNameTextField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Customer first name must be entered", "Error", JOptionPane.ERROR_MESSAGE);
+            fNameTextField.requestFocus(); //return to nameField back
+            return;
+        }
+        if (lNameTextField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Customer last name must be entered", "Error", JOptionPane.ERROR_MESSAGE);
+            lNameTextField.requestFocus(); //return to nameField back
+            return;
+        }
+        //clean text area
+         textArea.setText("");
          presenter.performQueryByName(fNameTextField.getText().trim(), lNameTextField.getText().trim());
     }//GEN-LAST:event_srchByNameBtnActionPerformed
 
     private void clearAllBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearAllBtnActionPerformed
         // TODO add your handling code here:
+        //clean all text fields
+        textArea.setText("");
         customerIDTextField.setText("");
         fNameTextField.setText("");
         lNameTextField.setText("");
@@ -656,6 +682,9 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
 
     private void srchBookingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_srchBookingBtnActionPerformed
         // TODO add your handling code here:
+        //clean text area
+        textArea.setText("");
+        presenter.searchBookingByVehicleNumber(serviceVehicleNumTextField.getText().trim());
     }//GEN-LAST:event_srchBookingBtnActionPerformed
 
     private void preBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preBtnActionPerformed
@@ -670,15 +699,23 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
         // TODO add your handling code here:
+        if (serviceIDTextField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Service ID must be entered", "Error", JOptionPane.ERROR_MESSAGE);
+            fNameTextField.requestFocus(); //return to nameField back
+            return;
+        }
+        textArea.setText("");
         presenter.cancelBooking(serviceIDTextField.getText().trim());
     }//GEN-LAST:event_cancelBtnActionPerformed
 
     private void preServiceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preServiceBtnActionPerformed
         // TODO add your handling code here:
+        presenter.showPreviousService();
     }//GEN-LAST:event_preServiceBtnActionPerformed
 
     private void nextServiceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextServiceBtnActionPerformed
         // TODO add your handling code here:
+        presenter.showNextService();
     }//GEN-LAST:event_nextServiceBtnActionPerformed
 
     private void currentServicePageNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentServicePageNumActionPerformed
@@ -688,6 +725,33 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
     private void currentPageNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentPageNumActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_currentPageNumActionPerformed
+
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+        // TODO add your handling code here:
+            if (fNameTextField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Customer detail missing", "Error", JOptionPane.ERROR_MESSAGE);
+            fNameTextField.requestFocus(); //return to nameField back
+            return;
+        }
+            if (lNameTextField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Customer detail missing", "Error", JOptionPane.ERROR_MESSAGE);
+            lNameTextField.requestFocus(); //return to nameField back
+            return;
+        }
+            if (phoneTextField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Customer detail missing", "Error", JOptionPane.ERROR_MESSAGE);
+            phoneTextField.requestFocus(); //return to nameField back
+            return;
+        }
+            if (addressTextField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Customer detail missing", "Error", JOptionPane.ERROR_MESSAGE);
+            addressTextField.requestFocus(); //return to nameField back
+            return;
+        }
+            //clean text area
+        textArea.setText("");
+        presenter.updateCustomerDetail(fNameTextField.getText().trim(), lNameTextField.getText().trim(), phoneTextField.getText().trim(), addressTextField.getText().trim(), Integer.parseInt(customerIDTextField.getText()));
+    }//GEN-LAST:event_updateBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -704,11 +768,13 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
     private javax.swing.JButton addServiceBtn;
     private javax.swing.JTextField addressTextField;
     private javax.swing.JTextField brandTextField;
+    private javax.swing.JPanel buttonPanel;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JButton clearAllBtn;
     private javax.swing.JTextField currentPageNum;
     private javax.swing.JTextField currentServicePageNum;
     private javax.swing.JTextField customerIDTextField;
+    private javax.swing.JPanel customerPanel;
     private javax.swing.JButton displayBtn;
     private javax.swing.JTextField fNameTextField;
     private javax.swing.JLabel jLabel1;
@@ -733,9 +799,6 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -755,6 +818,7 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
     private javax.swing.JTextField serviceDateTextField;
     private javax.swing.JTextField serviceDesTexField;
     private javax.swing.JTextField serviceIDTextField;
+    private javax.swing.JPanel servicePanel;
     private javax.swing.JTextField servicePriceTextField;
     private javax.swing.JTextField serviceVehicleNumTextField;
     private javax.swing.JButton srchBookingBtn;
@@ -762,7 +826,7 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
     private javax.swing.JButton srchByPhoneBtn;
     private javax.swing.JButton statisticBtn;
     private javax.swing.JTextField sumPageNum;
-    private javax.swing.JTextField sumServicePageNum1;
+    private javax.swing.JTextField sumServicePageNum;
     private javax.swing.JTextArea textArea;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
@@ -807,6 +871,8 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
     public void setBrowsing(boolean flag) {
         nextBtn.setEnabled(flag);
         preBtn.setEnabled(flag);
+        preServiceBtn.setEnabled(flag);
+        nextServiceBtn.setEnabled(flag);
     }
 
     @Override
@@ -818,6 +884,15 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
     @Override
     public void displayServiceEntries(Services s) {
         serviceIDTextField.setText(""+s.getServiceNumber());
+        serviceDesTexField.setText(s.getServiceDescription());
+        servicePriceTextField.setText(""+s.getPrice());
+        serviceDateTextField.setText(s.getServiceDate());
         
+    }
+
+    @Override
+    public void displayMaxAndCurrentServiceIndex(int sm, int sc) {
+        currentServicePageNum.setText(""+(sc+1));
+        sumServicePageNum.setText(""+sm);
     }
 }
