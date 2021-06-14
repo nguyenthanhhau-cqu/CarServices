@@ -124,7 +124,7 @@ public class ServicePresenter {
         int result = model.insertService(serviceDescription, serviceDate, price, VehicleNumber);
 
         if (result == 1) {
-            view.displayDataTextArea("Service added");
+            view.displayDataTextArea("Service added !");
         } else {
             view.displayDataTextArea("Service not added");
         }
