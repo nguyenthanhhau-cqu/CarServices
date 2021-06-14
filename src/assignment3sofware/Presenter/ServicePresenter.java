@@ -11,6 +11,8 @@ import assignment3sofware.Model.Services;
 import assignment3sofware.Model.Vehicle;
 import assignment3sofware.View.IServicesView;
 import java.security.Provider.Service;
+import assignment3sofware.Model.Services;
+
 import java.util.List;
 
 /**
@@ -21,16 +23,22 @@ public class ServicePresenter {
 
     IServicesView view;
     IServiceModel model;
+    
+    
 
     List<Vehicle> results;// list
     List<Services> serviceResult;
+    List<Double> result;
+    List<Services> resultService;    
     int currentEntryIndex;
     int numberOfEntries;
     int currentServiceEntryIndex;
     int numberOfServiceEntries;
     Services currentServiceEntry;
     Vehicle currentEntry;
-
+    Double min;
+    Double max;
+    Double avg;
     //constructor
     public ServicePresenter(IServicesView isv, IServiceModel ism) {
         view = isv;
@@ -223,7 +231,61 @@ public class ServicePresenter {
 	      else
 	          view.displayDataTextArea("Vehicle not added");
 	   }//END
-    
+    	  public void findMinimumPrice() {
+              List<Double> result = model.statistic();
+              
+               min = result.get(0);
+               avg = result.get(1);
+               max = result.get(2);
+              
+              
+              
+          }
+          public void vehicleServeByBrand()
+       {
+		   List<String> result2;//
+
+           result2=model.vehicleServeByBrand();
+
+	       int size=result2.size();
+		   String s="Brand\tNumber of Vehicles\n";
+           s=s+"------------------------------------------------------------------------------------\n";
+		   for (String value : result2) {
+			   s = s + "\n" + value;
+		   }
+           view.displayDataTextArea(s + "\n------------------------------------------------------------------------------------"
+                   + "\nMinimum service price is " + min + 
+                   "\n" + "Maximum service price is " + max + "\n" +"Avarage service price is "+ avg +"\n");
+	   }
+          
+          public void displayService() {
+	      try {
+	         resultService = model.displayServices();//
+
+	         numberOfEntries = resultService.size();
+	         if(numberOfEntries ==0)
+	             view.displayDataTextArea("No records found");
+
+                   String display="VehicleNumber\tDate\tService                                        Price\n";
+			 display=display+"--------------------------------------------------------------------------------------------------------------------------\n";
+
+	         if ( numberOfEntries != 0 ) {
+                for(int i=0;i<numberOfEntries;i++)
+                 {
+		    Services o=resultService.get(i);
+		    display=display+"\n"+o.getV().getRegisterNumber()+"\t"+o.getServiceDate()+"\t"+o.getServiceDescription() +"        " + "\t"+o.getPrice();
+	 	}
+	         }
+		     view.displayDataTextArea(display);
+	      }//end try
+
+	      catch ( Exception e ) {
+	         e.printStackTrace();
+	      }                
+                
+                
+          }
+
            
 
     }

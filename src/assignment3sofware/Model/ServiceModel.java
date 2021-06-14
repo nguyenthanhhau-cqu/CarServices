@@ -20,7 +20,7 @@ public class ServiceModel implements IServiceModel {
 
     private static final String URL = "jdbc:mysql://localhost:3306/carservicedb"; //NEW ADJUSTED
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "Dang123";//YOUR PASSWORD
+    private static final String PASSWORD = "Anhdasai123";//YOUR PASSWORD
     private Connection connection = null; // manages connection
     private PreparedStatement searchCustomerAndVehicleByName = null; // select query
     private PreparedStatement searchCustomerAndVehicleByPhone = null; // select query
@@ -35,6 +35,9 @@ public class ServiceModel implements IServiceModel {
     private int lastInsertedCustomerID=0; //latest customer ID after inserted a new cusoter
     private PreparedStatement selectAllCustomers = null;
     private PreparedStatement insertNewCustomer = null;// create a new customer 
+    private PreparedStatement statistic = null;  // find minimum and maximum and avg of prices
+    private PreparedStatement vehicleServeByBrand = null; //List vehicle by brand
+    private PreparedStatement displayService = null; //display all services
 
 
     // constructor
@@ -50,6 +53,10 @@ public class ServiceModel implements IServiceModel {
             insertService = connection.prepareStatement("INSERT INTO services "
                     + "(serviceDescription,servicedate,price,vehicleNumber)" + "VALUES (?,?,?,?)");
             //canle a booking
+             statistic = connection.prepareStatement("Select Min(price) as Min, Max(price) as Max, AVG(price) as AVG   from services");
+            displayService = connection.prepareStatement("SELECT * FROM Services As S left join Vehicles As V on S.VehicleNumber = V.VehicleNumber left join Customers as C on V.CustomerID = C.CustomerID ORDER BY price");
+            vehicleServeByBrand = connection.prepareStatement("Select b.VehicleBrand, count(*) as Counts From vehicles as b, customers as c where c.customerID = b.CustomerID Group BY B.VehicleBrand");
+            
             cancelABooking = connection.prepareStatement("DELETE FROM SERVICES WHERE SERVICEID =? ");
             //search a booking 
             searchBookingByVehicleNumber = connection.prepareStatement("SELECT * FROM Services As S left join Vehicles As V on S.VehicleNumber = V.VehicleNumber left join Customers as C on V.CustomerID = C.CustomerID Where S.VehicleNumber = ?");
@@ -298,6 +305,30 @@ public class ServiceModel implements IServiceModel {
         return result;
     } // end method addCustomer
 
+ @Override
+    public List<Double> statistic() {
+        double Min=0;
+        double Max=0;
+        double Avg=0;
+        ResultSet resultSet = null;
+        List<Double> result = new ArrayList<>();
+        try {
+           resultSet = statistic.executeQuery();//execute query
+           while (resultSet.next()) {
+               Min = resultSet.getDouble(1);
+               Max = resultSet.getDouble(2);
+               Avg = resultSet.getDouble(3);
+               
+               result.add(Min);
+               result.add(Avg);
+               result.add(Max);
+           }
+        } catch (SQLException e) {//handle error
+            e.printStackTrace();
+            
+        }
+        return result;
+    }
 
     
    
@@ -322,6 +353,73 @@ public class ServiceModel implements IServiceModel {
 			return result;
 	 }// end of the method
     }
+    
+    @Override
+    public List<String> vehicleServeByBrand() {
+		    List<String> result=new ArrayList<>();
+	 		ResultSet resultSet = null;
+
+	 	    try{
+	              resultSet = vehicleServeByBrand.executeQuery();//execute query
+
+	              while (resultSet.next())
+	              {
+	 				  String VehicleBrand = resultSet.getString("VehicleBrand");
+	 				  int Counts=  resultSet.getInt("Counts");
+
+	                  String s=VehicleBrand+"\t"+Counts;
+                          
+	                  result.add(s);
+                          
+	 		     } // end while
+	 	      } catch (SQLException e) {
+	 	            e.printStackTrace();
+	 	      } // end catch
+	 	      return result;             
+    }
+
+    @Override
+    public List<Services> displayServices() {
+        ResultSet resultSet = null;
+        List<Services> result = new ArrayList<>();
+
+        try {
+            resultSet = displayService.executeQuery();//execute query
+             while (resultSet.next()) {
+                 
+                int customerID = resultSet.getInt("CUSTOMERID");//get customer id
+                String firstName = resultSet.getString("FIRSTNAME");
+                String lastName = resultSet.getString("LASTNAME");
+                String phone = resultSet.getString("PHONE");
+                String address = resultSet.getString("ADDRESS");
+
+                Customer c = new Customer(customerID, firstName, lastName, phone, address);
+
+                String vehicleNumber = resultSet.getString("VehicleNumber");
+                String vehicleModel = resultSet.getString("VehicleModel");
+                String vehicleBrand = resultSet.getString("VehicleBrand");
+                int vehicleYear = resultSet.getInt("VehicleYear");
+                int vehicleKm = resultSet.getInt("VehicleKilometers");
+
+                Vehicle v = new Vehicle(vehicleNumber, vehicleModel, vehicleBrand, vehicleYear, vehicleKm, c);
+                
+                int serviceID = resultSet.getInt("serviceID");//get customer id
+                String serviceDescription = resultSet.getString("serviceDescription");
+                String serviceDate = resultSet.getString("serviceDate");
+                double price = resultSet.getDouble("price");
+                String VehicleNumber = resultSet.getString("VehicleNumber");   
+                
+                
+      
+                Services s = new Services(serviceID,serviceDescription,serviceDate,price,VehicleNumber,v);
+                result.add(s);
+             }
+    }catch (SQLException e) {//handle error
+            e.printStackTrace(); 
+          
+    }   
+       return result;
+}
 
     
 } // end class PersonQueries

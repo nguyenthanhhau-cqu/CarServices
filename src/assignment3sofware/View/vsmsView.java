@@ -353,6 +353,11 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
         });
 
         displayBtn.setText("Display all services");
+        displayBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                displayBtnActionPerformed(evt);
+            }
+        });
 
         clearAllBtn.setText("Clear All");
         clearAllBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -362,6 +367,11 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
         });
 
         statisticBtn.setText("Statistic");
+        statisticBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statisticBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout buttonPanelLayout = new javax.swing.GroupLayout(buttonPanel);
         buttonPanel.setLayout(buttonPanelLayout);
@@ -375,7 +385,7 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
                 .addGap(108, 108, 108)
                 .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(displayBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 160, Short.MAX_VALUE))
+                    .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(statisticBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
@@ -633,15 +643,32 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
 
     private void addServiceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addServiceBtnActionPerformed
         // TODO add your handling code here:
-        if (regisNumTextField.getText().compareTo("") == 0 &&
-                    brandTextField.getText().compareTo("") == 0 &&
-                    modelTextField.getText().compareTo("") == 0 &&
-                    manYearTextField.getText().compareTo("") == 0 &&
-                    kmTextField.getText().compareTo("") == 0)
-            {
-                JOptionPane.showMessageDialog(this,"Please Enter Details");
-               
+       
+        if (serviceDesTexField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "You must enter the description", "Error", JOptionPane.ERROR_MESSAGE);
+            serviceDesTexField.requestFocus(); //return to nameField back
+            return;
+        }
+        if (serviceDateTextField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "You must enter the date", "Error", JOptionPane.ERROR_MESSAGE);
+            serviceDateTextField.requestFocus(); //return to nameField back
+            return;
+        }
+        if (servicePriceTextField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "You must enter the price", "Error", JOptionPane.ERROR_MESSAGE);
+            servicePriceTextField.requestFocus(); //return to nameField back
+            return;
+        }
+            if (serviceVehicleNumTextField.getText().compareTo("") == 0) {
+                JOptionPane.showMessageDialog(this, "You must enter the vehicle number", "Error", JOptionPane.ERROR_MESSAGE);
+                serviceVehicleNumTextField.requestFocus(); //return to nameField back
+                return;
             }
+            if (serviceDesTexField.getText().length()  < 12) {
+            JOptionPane.showMessageDialog(this, "your description field is too short, at least 12 characters ", "Error", JOptionPane.ERROR_MESSAGE);
+            serviceDesTexField.requestFocus(); //return to nameField back
+            return;
+        }
         textArea.setText("");
         String Description=serviceDesTexField.getText();
         String date=serviceDateTextField.getText();
@@ -744,7 +771,7 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
         // TODO add your handling code here:
         presenter.showPreviousService();
     }//GEN-LAST:event_preServiceBtnActionPerformed
-
+                                       
     private void nextServiceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextServiceBtnActionPerformed
         // TODO add your handling code here:
         presenter.showNextService();
@@ -796,6 +823,18 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
        +"\n" + "          Address: " + getAddressTextField()
                
        );    }//GEN-LAST:event_addBtnActionPerformed
+
+    private void displayBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayBtnActionPerformed
+        // TODO add your handling code here:
+                presenter.displayService();
+
+    }//GEN-LAST:event_displayBtnActionPerformed
+
+    private void statisticBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statisticBtnActionPerformed
+        // TODO add your handling code here:
+        presenter.findMinimumPrice();
+        presenter.vehicleServeByBrand();
+    }//GEN-LAST:event_statisticBtnActionPerformed
 
     /**
      * @param args the command line arguments

@@ -22,5 +22,9 @@ public interface IServiceModel {
    
     public int addVehicleToCustomer(String VehicleNumber,String VehicleBrand,String VehicleModel, int VehicleYear, int VehicleKilometers, int CustomerID);
     public int getLastInsertedCustomerID();
+   
+    List<Double> statistic();
+    List<String> vehicleServeByBrand();
+    List<Services> displayServices();
     public void close();
 }

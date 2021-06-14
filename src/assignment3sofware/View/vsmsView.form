@@ -499,6 +499,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Display all services"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="displayBtnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="clearAllBtn">
           <Properties>
@@ -514,6 +517,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Statistic"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="statisticBtnActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
