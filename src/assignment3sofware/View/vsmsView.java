@@ -622,19 +622,27 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
     }//GEN-LAST:event_kmTextFieldActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
-    
-    if (customerIDTextField.getText().compareTo("") == 0 &&
-                    fNameTextField.getText().compareTo("") == 0 &&
-                    lNameTextField.getText().compareTo("") == 0 &&
-                    phoneTextField.getText().compareTo("") == 0 &&
-                    addressTextField.getText().compareTo("") == 0)
-            {
-                JOptionPane.showMessageDialog(this,"Please Enter Details");
-               
-            }
-    else{
-        presenter.insertNewEntry();
+    if (fNameTextField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Customer detail missing", "Error", JOptionPane.ERROR_MESSAGE);
+            fNameTextField.requestFocus(); //return to nameField back
+            return;
+        }
+            if (lNameTextField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Customer detail missing", "Error", JOptionPane.ERROR_MESSAGE);
+            lNameTextField.requestFocus(); //return to nameField back
+            return;
+        }
+            if (phoneTextField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Customer detail missing", "Error", JOptionPane.ERROR_MESSAGE);
+            phoneTextField.requestFocus(); //return to nameField back
+            return;
+        }
+            if (addressTextField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Customer detail missing", "Error", JOptionPane.ERROR_MESSAGE);
+            addressTextField.requestFocus(); //return to nameField back
+            return;
     }
+            presenter.insertNewEntry();
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void serviceVehicleNumTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serviceVehicleNumTextFieldActionPerformed
@@ -813,7 +821,37 @@ public class vsmsView extends javax.swing.JFrame implements IServicesView {
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-       presenter.showNext();
+            if (regisNumTextField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Customer detail missing", "Error", JOptionPane.ERROR_MESSAGE);
+            regisNumTextField.requestFocus(); //return to nameField back
+            return;
+        }
+            if (brandTextField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Customer detail missing", "Error", JOptionPane.ERROR_MESSAGE);
+            brandTextField.requestFocus(); //return to nameField back
+            return;
+        }
+            if (modelTextField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Customer detail missing", "Error", JOptionPane.ERROR_MESSAGE);
+            modelTextField.requestFocus(); //return to nameField back
+            return;
+        }
+            if (manYearTextField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Customer detail missing", "Error", JOptionPane.ERROR_MESSAGE);
+            manYearTextField.requestFocus(); //return to nameField back
+            return;
+        }
+             if (kmTextField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Customer detail missing", "Error", JOptionPane.ERROR_MESSAGE);
+            kmTextField.requestFocus(); //return to nameField back
+            return;
+        }
+              if (customerIDTextField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Customer detail missing", "Error", JOptionPane.ERROR_MESSAGE);
+            customerIDTextField.requestFocus(); //return to nameField back
+            return;
+        }
+        presenter.addVehicleToCustomer(regisNumTextField.getText(),brandTextField.getText(),modelTextField.getText(),Integer.parseInt(manYearTextField.getText()),Integer.parseInt(kmTextField.getText()), Integer.parseInt(customerIDTextField.getText()));
        textArea.setText("----------------------------"
        +"Founded Customer Information -----------------------"
        +"\n" + "          CustomerID: " + getCustomerIDTextField()

@@ -20,7 +20,7 @@ public class ServiceModel implements IServiceModel {
 
     private static final String URL = "jdbc:mysql://localhost:3306/carservicedb"; //NEW ADJUSTED
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "Anhdasai123";//YOUR PASSWORD
+    private static final String PASSWORD = "Dang123";//YOUR PASSWORD
     private Connection connection = null; // manages connection
     private PreparedStatement searchCustomerAndVehicleByName = null; // select query
     private PreparedStatement searchCustomerAndVehicleByPhone = null; // select query

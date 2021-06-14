@@ -223,9 +223,9 @@ public class ServicePresenter {
         }
 
     }
-    public void addVehicleToCustomer(String VehicleNum,String VehicleBrand,String VehicleMode, int VehicleYear, int VehicleKilometer, int CustomerID) {        
+    public void addVehicleToCustomer(String VehicleNum, String VehicleBrand, String VehicleMode, int VehicleYear, int VehicleKilometers, int CustomerID) {        
 
-	      int result = model.addVehicleToCustomer(VehicleNum,VehicleBrand, VehicleMode,VehicleYear,VehicleKilometer, CustomerID);
+	      int result = model.addVehicleToCustomer(VehicleNum,VehicleBrand, VehicleMode,VehicleYear,VehicleKilometers, CustomerID);
 	      if ( result == 1 )
 	          view.displayDataTextArea("Vehicle added");
 	      else
