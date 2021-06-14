@@ -20,13 +20,14 @@ public class ServiceModel implements IServiceModel {
 
    private static final String URL = "jdbc:mysql://localhost:3306/carservicedb"; //NEW ADJUSTED
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "Anhdasai123";//YOUR PASSWORD
+    private static final String PASSWORD = "Hoanduong05";//YOUR PASSWORD
     private Connection connection = null; // manages connection
     private PreparedStatement searchCustomerAndVehicleByName = null; // select query
     private PreparedStatement searchCustomerAndVehicleByPhone = null; // select query
     private PreparedStatement insertService = null; // Insert a new service
     private PreparedStatement getAllVehicle = null;
     private String lastInsertedVehicleID = "";
+    private PreparedStatement cancelABooking = null;
 
     // constructor
     public ServiceModel() {
@@ -37,9 +38,12 @@ public class ServiceModel implements IServiceModel {
             searchCustomerAndVehicleByName = connection.prepareStatement("SELECT * FROM Customers As C left Join Vehicles As V on C.CustomerID=V.CustomerID where FIRSTNAME=? and LASTNAME=?");
             //search customer and vehicle by phone sql statement
             searchCustomerAndVehicleByPhone = connection.prepareStatement("SELECT * FROM Customers As C left Join Vehicles As V on C.CustomerID=V.CustomerID where Phone =?");
+            //insert a service to a vehicle
             insertService=connection.prepareStatement("INSERT INTO services "
                     + "(serviceDescription,servicedate,price,vehicleNumber)" + "VALUES (?,?,?,?)");
-        } // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try // end try
+            //canle a booking
+            cancelABooking = connection.prepareStatement("DELETE FROM SERVICES WHERE SERVICEID =? ");
+        } // end try  
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
             System.exit(1);
@@ -146,6 +150,17 @@ public class ServiceModel implements IServiceModel {
 		return result;
     };
 
-    
+    public int cancelABooking(String serviceID) {
+        ResultSet resultSet = null;
+        int result = 0;
+        try {
+            cancelABooking.setString(1, serviceID);
+            cancelABooking.executeQuery();
+        } // end while
+        catch (SQLException e) {//handle error
+            e.printStackTrace();
+        } // end catch
+        return result;
+    }
     
 } // end class PersonQueries

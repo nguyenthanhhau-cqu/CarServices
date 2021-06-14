@@ -17,14 +17,7 @@ public class Vehicle {
    private int kilometers;
    private Customer c;
 
-    public Customer getC() {
-        return c;
-    }
-
-    public void setC(Customer c) {
-        this.c = c;
-    }
-   
+    
    public Vehicle() {
        
    }
@@ -35,7 +28,16 @@ public class Vehicle {
         this.model = model;
         this.year = year;
         this.kilometers = kilometers;
+        c =c1;
     }
+    public Customer getC() {
+        return c;
+    }
+
+    public void setC(Customer c1) {
+        c =c1;
+    }
+   
 
     public String getRegisterNumber() {
         return registerNumber;

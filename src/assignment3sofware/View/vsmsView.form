@@ -418,21 +418,21 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="srchByNameBtn" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
-                      <Component id="srchByPhoneBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="srchByNameBtn" max="32767" attributes="0"/>
+                      <Component id="srchByPhoneBtn" pref="173" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="displayBtn" max="32767" attributes="0"/>
                       <Component id="updateBtn" pref="160" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="100" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="srchBookingBtn" pref="162" max="32767" attributes="0"/>
-                      <Component id="cancelBtn" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="srchBookingBtn" min="-2" pref="162" max="-2" attributes="0"/>
+                      <Component id="statisticBtn" min="-2" pref="162" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="50" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               </Group>
               <Component id="jSeparator4" alignment="0" max="32767" attributes="0"/>
           </Group>
@@ -446,13 +446,13 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="srchByNameBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="updateBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cancelBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="srchBookingBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="srchByPhoneBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="displayBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="srchBookingBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="statisticBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -463,11 +463,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Search customer by name"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="srchByNameBtnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="srchByPhoneBtn">
           <Properties>
             <Property name="text" type="java.lang.String" value="Search customer by phone"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="srchByPhoneBtnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="updateBtn">
           <Properties>
@@ -479,17 +485,17 @@
             <Property name="text" type="java.lang.String" value="Display all services"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="cancelBtn">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cancel a booking"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="srchBookingBtn">
           <Properties>
             <Property name="text" type="java.lang.String" value="Search a booking"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator4">
+        </Component>
+        <Component class="javax.swing.JButton" name="statisticBtn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Statistic"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
@@ -513,50 +519,62 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="serviceIDTextField" min="-2" pref="293" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="serviceDesTexField" min="-2" pref="293" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="serviceDateTextField" min="-2" pref="293" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="servicePriceTextField" max="32767" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="serviceVehicleNumTextField" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
               <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="addServiceBtn" min="-2" pref="132" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="332" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="serviceIDTextField" min="-2" pref="293" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                                  <Component id="serviceDesTexField" min="-2" pref="293" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="addServiceBtn" min="-2" pref="132" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="serviceDateTextField" min="-2" pref="293" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="servicePriceTextField" max="32767" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="serviceVehicleNumTextField" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="cancelBtn" min="-2" pref="123" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="221" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -584,7 +602,10 @@
                       <Component id="serviceVehicleNumTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="addServiceBtn" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="addServiceBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cancelBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -646,6 +667,11 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addServiceBtnActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="cancelBtn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cancel a booking"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
